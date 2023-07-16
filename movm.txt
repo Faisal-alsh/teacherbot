@@ -1,0 +1,30 @@
+'jump’ = 1
+
+'turn right' = 2
+
+'turn left'
+
+'walk backward'
+
+'walk forward'
+
+'grab'
+
+'hold'
+
+'let go'
+
+'start painting on the ground'
+
+'stop painting on the ground'
+
+'walk in a circle'
+
+Example:
+
+Draw two circles that don't overlap:
+
+start painting on the ground, walk in a circle, stop painting on the ground, walk forward, start painting on the ground, walk in a circle, stop painting on the ground
+
+
+
