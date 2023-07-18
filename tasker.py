@@ -15,6 +15,7 @@ Original file is located at
 
 import os
 import pandas as pd
+import openai
 import matplotlib.pyplot as plt
 from transformers import GPT2TokenizerFast
 from langchain.document_loaders import PyPDFLoader
@@ -25,7 +26,7 @@ from langchain.chains.question_answering import load_qa_chain
 from langchain.llms import OpenAI
 from langchain.chains import ConversationalRetrievalChain
 
-os.environ["OPENAI_API_KEY"] = "PUT API KEY HERE"
+os.environ["OPENAI_API_KEY"] = ""
 
 """# 1. Loading txt file
 
@@ -70,9 +71,14 @@ db = FAISS.from_documents(chunks, embeddings)
 
 chain = load_qa_chain(OpenAI(temperature=0), chain_type="stuff")
 
-Uquery = input("request a movment: ")
+#Uquery = input("request a movment: ")
 #query = Uquery +"/###/ you are talking to a robot who has a paint brush , use ONLY and  the commanads in given  to solve the task if the task needs something not in the TXT then say you cant."
-query = Uquery +"/###/ you are talking to a robot who has a paint brush , Make a combination of the commands EXACTLY seperated by a comma that when done in the order said it will complete the request, do NOT use a full stop at the end and make it all lower case"
+audio_file= open("math3.m4a", "rb")
+# transcript = openai.Audio.transcribe("whisper-1", audio_file)
+transcript = "draw a square"
+
+#print(transcript)
+query = transcript +"/###/ you are talking to a robot who has a paint brush , Make a combination of the commands EXACTLY seperated by a comma that when done in the order said it will complete the request, do NOT use a full stop at the end and make it all lower case"
 
 docs = db.similarity_search(query)
 
